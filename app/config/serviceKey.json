@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ecommerce1-api",
+  "private_key_id": "17ddaf65e57116e09741060a2139378cd1b08919",
+  "client_email": "firebase-adminsdk-ge3xx@ecommerce1-api.iam.gserviceaccount.com",
+  "client_id": "118425988321154650516",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ge3xx%40ecommerce1-api.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
