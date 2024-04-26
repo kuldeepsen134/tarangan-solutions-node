@@ -21,11 +21,12 @@ const HOST = '192.168.0.23';
 
 
 app.use(cors({
-    origin: ["*",],
-    methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"],
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-}));
+	origin: ['http://localhost:3000', 'http://192.168.0.23:3000',],
+	credentials: true,
+	methods: ['POST', 'PUT', 'PATCH', 'GET', 'DELETE'],
+	preflightContinue: false,
+	optionsSuccessStatus: 204
+  }));
 
 
 
@@ -42,10 +43,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-
 
 
 
