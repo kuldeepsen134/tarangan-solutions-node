@@ -17,10 +17,6 @@ exports.socialLogin = async (req, res) => {
 };
 
 
-
-
-
-
 // User can sign-up
 exports.create = async (req, res) => {
     try {
@@ -119,7 +115,7 @@ exports.findOne = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findOne({ _id: id })
-        handleResponse(res, user, 200)
+        handleResponse(res, user._doc, 200)
     } catch (error) {
         handleError(error.message, 400, res)
     };
@@ -144,7 +140,7 @@ exports.update = async (req, res) => {
             mobile
         }
         await User.updateOne({ _id: id }, data, { new: true })
-        handleResponse(res, [], 200, 'User has been updated.')
+        handleResponse(res, [], 'User has been updated.', 200)
     } catch (error) {
         handleError(error, 400, res)
     };

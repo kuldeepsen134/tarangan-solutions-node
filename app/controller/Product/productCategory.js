@@ -4,7 +4,7 @@ const { productCategorySchema, updateProductCategorySchema } = require("../valid
 
 exports.create = async (req, res) => {
     try {
-        const { name, description, parentCategoryID, subCategoriesID,  } = req.body
+        const { name, description, parentCategoryID, subCategoriesID, } = req.body
 
         const { error } = productCategorySchema.validate(req.body, { abortEarly: false });
 
@@ -12,13 +12,13 @@ exports.create = async (req, res) => {
             handleError(error, 400, res);
             return;
         };
-        const data = { name, description, parentCategoryID, subCategoriesID,  }
+        const data = { name, description, parentCategoryID, subCategoriesID, }
 
         const newProductCategory = new ProductCategories(data);
 
         await newProductCategory.save();
 
-        handleResponse(res, newProductCategory, 'Product category has been successfully created.', 201);
+        handleResponse(res, newProductCategory._doc, 'Product category has been successfully created.', 201);
 
     } catch (error) {
 
@@ -35,7 +35,8 @@ exports.find = async (req, res) => {
             ]
         } : {};
 
-        const category = await ProductCategories.find({ ...searchFilter })
+        const category = await ProductCategories.find({ ...searchFilter }).populate('parentCategoryID').populate('subCategoriesID')
+
 
         const totalCount = await ProductCategories.countDocuments()
 
@@ -52,7 +53,7 @@ exports.findOne = async (req, res) => {
     try {
         const { id } = req.params;
         const category = await ProductCategories.findOne({ _id: id })
-        handleResponse(res, {...category._doc}, 'Fetched product category successfully', 200)
+        handleResponse(res, { ...category._doc }, 'Fetched product category successfully', 200)
     } catch (error) {
         handleError(error, 400, res)
     };
@@ -60,7 +61,7 @@ exports.findOne = async (req, res) => {
 
 exports.updateProductCategory = async (req, res) => {
     try {
-        const { name, description, parentCategoryID, subCategoriesID,  } = req.body
+        const { name, description, parentCategoryID, subCategoriesID, } = req.body
         const { error } = updateProductCategorySchema.validate(req.body, { abortEarly: false })
 
         if (error) {
@@ -76,7 +77,7 @@ exports.updateProductCategory = async (req, res) => {
             return;
         }
 
-        const data = { name, description, parentCategoryID, subCategoriesID,  }
+        const data = { name, description, parentCategoryID, subCategoriesID, }
 
         await ProductCategories.updateOne({ _id: category._id }, data, { new: true })
 

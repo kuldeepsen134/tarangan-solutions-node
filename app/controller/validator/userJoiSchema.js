@@ -9,6 +9,7 @@ const registerUser = Joi.object().keys({
 })
 
 const updateUser = Joi.object().keys({
+    _id: Joi.string(),
     full_name: Joi.string(),
     email: Joi.string().email(),
     mobile: Joi.string().min(10).max(13),

@@ -19,7 +19,7 @@ exports.create = async (req, res) => {
 
         const savedBrand = await newBrand.save();
 
-        handleResponse(res, savedBrand, 'Your Brand has been successfully created.', 201)
+        handleResponse(res, savedBrand._doc, 'Your Brand has been successfully created.', 201)
 
     } catch (error) {
         handleError(error, 400, res);

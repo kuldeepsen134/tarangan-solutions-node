@@ -4,7 +4,7 @@ const Joi = require('joi');
 const productCategorySchema = Joi.object({
     name: Joi.string().required(),
     description: Joi.string().required(),
-    parentCategory: Joi.string().allow('').allow(null), 
+    parentCategoryID: Joi.string().allow('').allow(null), 
     subcategories:Joi.array().items(Joi.string().allow(null).allow(''))
 });
 
@@ -12,7 +12,7 @@ const productCategorySchema = Joi.object({
 const updateProductCategorySchema = Joi.object({
     name: Joi.string().required(),
     description: Joi.string().required(),
-    parentCategory: Joi.string().allow('').allow(null), 
+    parentCategoryID: Joi.string().allow('').allow(null), 
     subcategories:Joi.array().items(Joi.string().allow(null).allow(''))
 });
 

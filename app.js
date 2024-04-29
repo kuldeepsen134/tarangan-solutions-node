@@ -32,7 +32,6 @@ app.use(cors({
 
 require('./app/controller/passport');
 
-
 app.use(
 	cookieSession({
 		name: "session",
@@ -50,11 +49,13 @@ app.use(bodyParser.json())
 
 const { authJWT } = require('./app/middleware/auth');
 const { handleError } = require('./app/utils/helper');
+
 app.use(authJWT);
 
 app.use(morgan('dev'));
 
 require('./app/router/user')(app);
+
 require('./app/router/auth')(app);
 require('./app/router/address')(app);
 
@@ -68,13 +69,7 @@ require('./app/router/addToCart')(app);
 require('./app/router/order')(app);
 
 
-
-
-
-
-
 app.get('*', (req, res) => handleError('Hunnn smart!', 400, res,));
-
 
 
 app.listen(port, HOST, () => console.log(`Server is running port on ${HOST}:${port}`))
