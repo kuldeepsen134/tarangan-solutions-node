@@ -16,7 +16,7 @@ const port = PORT;
 
 
 app.use(cors({
-	origin: ['http://localhost:3000', 'http://192.168.0.23:3000', 'https://tarangan-admin.netlify.app', 'https://tarangan-client.netlify.app'],
+	origin: ['http://localhost:3000', 'http://localhost:3001', 'https://tarangan-admin.netlify.app', 'https://tarangan-client.netlify.app'],
 	credentials: true,
 	methods: ['POST', 'PUT', 'PATCH', 'GET', 'DELETE'],
 	preflightContinue: false,

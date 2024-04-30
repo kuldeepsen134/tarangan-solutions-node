@@ -11,7 +11,6 @@ const { loginUser, updateUserPassword, resetUserPassword } = require('./validato
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body
-
         const { error } = loginUser.validate(req.body, { abortEarly: false })
         if (error) {
             handleError(error, 400, res)
