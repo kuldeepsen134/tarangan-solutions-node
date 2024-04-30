@@ -11,23 +11,17 @@ const passport = require("passport");
 
 const cookieSession = require("cookie-session");
 
-
 const { PORT } = require('./app/config/config');
-
-
 const port = PORT;
-const HOST = '192.168.0.23';
-
 
 
 app.use(cors({
-	origin: ['http://localhost:3000', 'http://192.168.0.23:3000',],
+	origin: ['http://localhost:3000', 'http://192.168.0.23:3000', 'https://tarangan-admin.netlify.app', 'https://tarangan-client.netlify.app'],
 	credentials: true,
 	methods: ['POST', 'PUT', 'PATCH', 'GET', 'DELETE'],
 	preflightContinue: false,
 	optionsSuccessStatus: 204
-  }));
-
+}));
 
 
 require('./app/controller/passport');
@@ -72,4 +66,4 @@ require('./app/router/order')(app);
 app.get('*', (req, res) => handleError('Hunnn smart!', 400, res,));
 
 
-app.listen(port, HOST, () => console.log(`Server is running port on ${HOST}:${port}`))
+app.listen(port, () => console.log(`Server is running port on:${port}`))
