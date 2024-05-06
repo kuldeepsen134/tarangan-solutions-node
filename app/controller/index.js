@@ -12,4 +12,8 @@ module.exports = {
     addTocarts: require('./addToCart'),
 
     orders: require('./order'),
+
+
+    agencies: require('./agency'),
+
 }

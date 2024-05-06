@@ -5,6 +5,8 @@ mongoose.connect(`${DB_URI}`).then(() => console.log('Db connection done')).catc
 
 const db = {
     User: require('./user'),
+    Agency: require('./agency'),
+
     Address: require('./address'),
 
     Products: require('./product/product'),
@@ -16,8 +18,6 @@ const db = {
     AddToCart: require('./addToCart'),
     
     Order: require('./order'),
-
-
 
 }
 

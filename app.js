@@ -49,6 +49,8 @@ app.use(authJWT);
 app.use(morgan('dev'));
 
 require('./app/router/user')(app);
+require('./app/router/agency')(app);
+
 
 require('./app/router/auth')(app);
 require('./app/router/address')(app);
