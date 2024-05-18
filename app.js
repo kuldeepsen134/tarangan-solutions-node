@@ -44,6 +44,7 @@ app.use(bodyParser.json())
 const { authJWT } = require('./app/middleware/auth');
 const { handleError } = require('./app/utils/helper');
 
+require('./app/router/product/product')(app);
 app.use(authJWT);
 
 app.use(morgan('dev'));
@@ -57,7 +58,7 @@ require('./app/router/address')(app);
 
 require('./app/router/product/brand')(app);
 require('./app/router/product/productCategory')(app);
-require('./app/router/product/product')(app);
+
 
 require('./app/router/wishList')(app);
 
